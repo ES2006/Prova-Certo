@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prova: Construção software web</title>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    <h1>Avaliação</h1>
+    <form id="formulario">
+        <label for="nome">Nome:</label>
+        <br>
+        <input type="text" id="nome" name="nome">
+
+        <br>
+        <br>
+
+        <label for="matricula">Matrícula:</label>
+        <br>
+        <input type="text" id="matricula" name="matricula">
+        
+        <br>
+        <br>
+
+        <label for="nota1">Nota 1:</label>
+        <br>
+        <input type="number" id="nota1" name="nota1" step="0.1" min="0" max="10">
+        
+        <br>
+        <br>
+
+        <label for="nota2">Nota 2:</label>
+        <br>
+        <input type="number" id="nota2" name="nota2" step="0.1" min="0" max="10">
+        
+        <br>
+        <br>
+
+        <input type="submit" value="Enviar">
+    </form>
+
+
+    <table id="tabela">
+        <tbody>
+            <tr>
+                <th>Nome</th>
+                <th>Matrícula</th>
+                <th>Nota 1</th>
+                <th>Nota 2</th>
+                <th>Média</th>
+                <th>Situação</th>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<script>
+    document.getElementById('formulario').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var nome = document.getElementById('nome').value;
+        var matricula = document.getElementById('matricula').value;
+        var nota1 = parseFloat(document.getElementById('nota1').value);
+        var nota2 = parseFloat(document.getElementById('nota2').value);
+        var media = (nota1 + nota2) / 2;
+        var situacao = media > 5 ? 'Aprovado' : 'Reprovado';
+
+        var tabela = document.getElementById('tabela');
+        var linha = tabela.insertRow(-1);
+        var celula1 = linha.insertCell(0);
+        var celula2 = linha.insertCell(1);
+        var celula3 = linha.insertCell(2);
+        var celula4 = linha.insertCell(3);
+        var celula5 = linha.insertCell(4);
+        var celula6 = linha.insertCell(5);
+        celula1.innerHTML = nome;
+        celula2.innerHTML = matricula;
+        celula3.innerHTML = nota1;
+        celula4.innerHTML = nota2;
+        celula5.innerHTML = media.toFixed(2);
+        celula6.innerHTML = situacao;
+    });
+    </script>
+  </body>
+</html>
